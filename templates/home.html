@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    hello
+    <form method="POST" action="/mails" method="post"> 
+        <input name = "text" type = "text">
+        <a href="/mails">
+            <input type = "Submit">
+        </a>
+    </form>
+
+    <!-- {% if message %}
+    <div class="result">
+        <h1>"{{message}}"</h1>
+    </div>
+    {% else %}
+            <p></p>
+    {% endif %} -->
+
+
+    {% if message %}
+    <p id = "text">{{ message }}</p>
+    {% endif %}
+    <a href = '/inbox'>
+    <button  name = "inbox">Inbox</button>
+    </a>
+</body>
+</html>
