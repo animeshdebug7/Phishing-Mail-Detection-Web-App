@@ -12,13 +12,7 @@ user = "*"   # Enter Gmail Address
 password = "#"  # Password (Use App Password as google doesn't allow IMTP servers to access accounts directly since May - 2022)
 
 server = e.connect("imap.gmail.com", user, password)
-# email = server.mail(server.listids())
 mails = []
-
-# for i in range(len(ids)):
-#     x = server.mail(server.listids()[i])
-#     mails.append(x.body)
-
 
 tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 model = TFDistilBertForSequenceClassification.from_pretrained("model")
@@ -33,19 +27,15 @@ def home():
 
 @app.route('/mails', methods = ['GET', 'POST'])
 def mails():
-    # print('0')
     text = request.form["text"]
     result = pipe(text)
-    # print(type(result))
     score = result[0]['label']
     return render_template('mails.html', message = score)
 
 @app.route('/inbox', methods = ['GET', 'POST'])
 def inbox():
     ids = server.listids()
-    # mails = []
     data_to_append = []
-    # header = ['Type','Date','Title','From','Body']
     file = open('mails.csv', 'a', newline = '')
     file.truncate(0)
 
@@ -60,21 +50,16 @@ def inbox():
             mail.append('Safe')
         else:
             mail.append('Unsafe')
-        # mail.append(score)
         mail.append(x.date)
         mail.append(x.title)
         mail.append(x.from_addr)
         mail.append(x.body)
         data_to_append.append(mail)
 
-    # data_to_append.append(mails)
-    # writer.writerow(header)
     writer.writerows(data_to_append)
     file.close()
     file = open('mails.csv', 'r+', newline = '')
     df = csv.reader(file)
-    # file.close()
-    # file.truncate(0)
     print(0)
     return render_template("inbox.html", csv = df)
 
