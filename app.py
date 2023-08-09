@@ -8,8 +8,8 @@ import csv
 import easyimap as e
 
 
-user = "*"
-password = "#"
+user = "mails.test07@gmail.com"
+password = "leidgincvhuqdwtf"
 
 server = e.connect("imap.gmail.com", user, password)
 # email = server.mail(server.listids())
@@ -45,7 +45,7 @@ def inbox():
     ids = server.listids()
     # mails = []
     data_to_append = []
-    header = ['Type','Date','Title','From','Body']
+    # header = ['Type','Date','Title','From','Body']
     file = open('mails.csv', 'a', newline = '')
     file.truncate(0)
 
@@ -68,7 +68,7 @@ def inbox():
         data_to_append.append(mail)
 
     # data_to_append.append(mails)
-    writer.writerow(header)
+    # writer.writerow(header)
     writer.writerows(data_to_append)
     file.close()
     file = open('mails.csv', 'r+', newline = '')

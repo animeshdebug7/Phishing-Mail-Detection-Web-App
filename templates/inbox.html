@@ -6,7 +6,13 @@
     <title>Inbox</title>
 </head>
 <body>
+    <h1>Inbox</h1>
     <table id="inbox" class="table">
+        <th>Type</th>
+        <th>Date</th>
+        <th>Title</th>
+        <th>From</th>
+        <th>Body</th>
         {% for row in csv %}
           <tr>
           {% for col in row %}
@@ -17,16 +23,59 @@
     </table>
 </body>
 <style>
+body
+{
+    background-color: rgb(1, 1, 103);
+}
+
+h1
+{
+    color: sandybrown;
+    font-family: Tahoma, sans-serif;
+    margin-bottom: 0px;
+    margin-top: 2px;
+}
+
+.table, tr
+{   
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family: Tahoma, sans-serif;
+    background-color: sandybrown;
+    font-size: 0.9em;
+    /* min-width: 400px; */
+    border-radius: 5px 5px 5px 5px;
+    overflow: hidden;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
+}    
+
+/* .tr
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+} */
+.td
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family: Tahoma, sans-serif;
+}
 
 .table
 {
+    margin: 2% 2%;
     background-color: sandybrown;
-    margin: 25px 0;
-    font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}    
+    border-collapse: collapse;
+    width: 100%;
+    margin-left: 1px;
+    margin-bottom:  1px;
+}
+
+tr:hover
+{
+    background-color: coral;
+    color: black;
+}
+
 </style>
 </html>

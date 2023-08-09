@@ -3,31 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mail</title>
 </head>
 <body>
-    hello
-    <form method="POST" action="/mails" method="post"> 
+    <!-- <form method="POST" action="/mails" method="post"> 
         <input name = "text" type = "text">
         <a href="/mails">
             <input type = "Submit">
         </a>
-    </form>
+    </form> -->
 
     <!-- {% if message %}
-    <div class="result">
-        <h1>"{{message}}"</h1>
-    </div>
-    {% else %}
-            <p></p>
-    {% endif %} -->
-
-
-    {% if message %}
     <p id = "text">{{ message }}</p>
-    {% endif %}
+    {% endif %} -->
+<div class = "btn-container">
+    <video autoplay muted loop id = "myVideo">
+    <source src = "static/sky.mp4" type = "video/mp4">
+    </video>
     <a href = '/inbox'>
-    <button  name = "inbox">Inbox</button>
+        <button  name = "inbox" id = "btn1">Inbox</button>
     </a>
+</div>
+
+<img src="static/logo.png" alt="Flowers in Chania" id = "logo">
+
+<style>
+
+#myVideo 
+{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#logo
+{
+    position: absolute;
+    left: 7.1%;
+    top: 3%;
+}
+
+.btn-container
+{
+    display: inline-block;
+    position: relative;
+}
+
+.btn-container a
+{
+    position: absolute;
+}
+
+#btn1
+{
+    margin-top: 50%;
+    margin-left: 50%;
+    border: 2px solid sandybrown;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    background-color: transparent;
+    color: rgb(1, 1, 103);
+    transition-duration: 0.4s;
+}
+
+#btn1:hover {
+    background-color: sandybrown; /* Green */
+    color: rgb(1, 1, 103);
+}
+
+</style>
 </body>
 </html>
