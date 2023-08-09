@@ -8,8 +8,8 @@ import csv
 import easyimap as e
 
 
-user = "*"
-password = "#"
+user = "*"   # Enter Gmail Address
+password = "#"  # Password (Use App Password as google doesn't allow IMTP servers to access accounts directly since May - 2022)
 
 server = e.connect("imap.gmail.com", user, password)
 # email = server.mail(server.listids())
