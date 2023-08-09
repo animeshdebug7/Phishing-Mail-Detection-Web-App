@@ -8,8 +8,8 @@ import csv
 import easyimap as e
 
 
-user = "mails.test07@gmail.com"
-password = "leidgincvhuqdwtf"
+user = "*"
+password = "#"
 
 server = e.connect("imap.gmail.com", user, password)
 # email = server.mail(server.listids())
