@@ -12,7 +12,6 @@ user = "mails.test07@gmail.com"
 password = "leidgincvhuqdwtf"
 
 server = e.connect("imap.gmail.com", user, password)
-ids = server.listids()
 # email = server.mail(server.listids())
 mails = []
 
@@ -43,15 +42,25 @@ def mails():
 
 @app.route('/inbox', methods = ['GET', 'POST'])
 def inbox():
+    ids = server.listids()
     # mails = []
     data_to_append = []
-
+    header = ['Type','Date','Title','From','Body']
     file = open('mails.csv', 'a', newline = '')
+    file.truncate(0)
+
     writer = csv.writer(file)
 
     for i in range(len(ids)):
         x = server.mail(server.listids()[i])
         mail = []
+        result = pipe(x.body[:20])
+        score = result[0]['label']
+        if score == 'LABEL_0':
+            mail.append('Safe')
+        else:
+            mail.append('Unsafe')
+        # mail.append(score)
         mail.append(x.date)
         mail.append(x.title)
         mail.append(x.from_addr)
@@ -59,10 +68,13 @@ def inbox():
         data_to_append.append(mail)
 
     # data_to_append.append(mails)
+    writer.writerow(header)
     writer.writerows(data_to_append)
-    file = open('mails.csv', 'r', newline = '')
+    file.close()
+    file = open('mails.csv', 'r+', newline = '')
     df = csv.reader(file)
     # file.close()
+    # file.truncate(0)
     print(0)
     return render_template("inbox.html", csv = df)
 

@@ -6,7 +6,7 @@
     <title>Inbox</title>
 </head>
 <body>
-    <table id="inbox">
+    <table id="inbox" class="table">
         {% for row in csv %}
           <tr>
           {% for col in row %}
@@ -16,4 +16,17 @@
         {% endfor %}
     </table>
 </body>
+<style>
+
+.table
+{
+    background-color: sandybrown;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}    
+</style>
 </html>
